@@ -24,6 +24,7 @@ public:
     void loadStationInfo();
     void readNetwork();
     void stationInfo(std::string name);
+    double maxtrainflow(Station A, Station B);
 private:
     Graph trainNetwork;
     std::set<Station> stationsSet;

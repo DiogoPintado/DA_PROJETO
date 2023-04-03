@@ -35,16 +35,20 @@ public:
 
     int getNumVertex() const;
     std::vector<Vertex *> getVertexSet() const;
+    /*
+     * Finds the index of the vertex with a given content.
+     */
+    int findVertexIdx(const std::string &name) const;
+    void Graph::testAndVisit(std::queue< Vertex*> &q, Edge *e, Vertex *w, double residual);
+    bool Graph::findAugmentingPath(Vertex *s, Vertex *t);
+    double Graph::findMinResidualAlongPath(Vertex *s, Vertex *t);
+    void Graph::augmentFlowAlongPath(Vertex *s, Vertex *t, double f);
+    double Graph::edmondsKarp(std::string source, std::string target);
 protected:
     std::vector<Vertex *> vertexSet;    // vertex set
 
     double ** distMatrix = nullptr;   // dist matrix for Floyd-Warshall
     int **pathMatrix = nullptr;   // path matrix for Floyd-Warshall
-
-    /*
-     * Finds the index of the vertex with a given content.
-     */
-    int findVertexIdx(const std::string &name) const;
 };
 
 void deleteMatrix(int **m, int n);
