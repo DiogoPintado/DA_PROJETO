@@ -4,8 +4,6 @@
 
 #include "../include/Database.h"
 
-
-
 using namespace std;
 
 void Database::loadStationInfo() {
@@ -56,6 +54,13 @@ void Database::readNetwork() {
 
         Network* network = new Network(stationA, stationB, stoi(capacity), service);
         networkSet.insert(*network);
+        if(trainNetwork.findVertexIdx(stationA) == -1){
+            trainNetwork.addVertex(stationA);
+        }
+        if(trainNetwork.findVertexIdx(stationA) == -1){
+            trainNetwork.addVertex(stationB);
+        }
+        trainNetwork.addEdge(stationA,stationB,stoi(capacity),service);
 
     }
     networkFile.close();
@@ -68,3 +73,12 @@ void Database::stationInfo(std::string name) {
         }
     }
 }
+
+double Database::maxtrainflow(Station A, Station B){
+    if(trainNetwork.findVertexIdx(A.getName()) == -1 || trainNetwork.findVertexIdx(B.getName()) == -1){
+        return 0;
+    }
+    return trainNetwork.edmondsKarp(A.getName(),B.getName());
+}
+
+

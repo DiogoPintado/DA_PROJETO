@@ -4,8 +4,6 @@
 
 #ifndef DA_PROJETO_NETWORK_H
 #define DA_PROJETO_NETWORK_H
-#ifndef NETWORK_H
-#define NETWORK_H
 
 #include <string>
 #include <vector>
@@ -37,3 +35,4 @@ private:
 
 
 #endif //DA_PROJETO_NETWORK_H
+
